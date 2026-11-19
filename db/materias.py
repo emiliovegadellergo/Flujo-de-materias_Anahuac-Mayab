@@ -21,7 +21,7 @@ ORDER BY tipo, semestre, clave
 # C3 Leer una materia
 QUERY_OBTENER_MATERIA = """
 MATCH (m:Materia {clave: $clave})
-RETURN m {.*} AS materia
+RETURN m {.clave, .nombre, .semestre, .creditos, .bloque, .tipo} AS materia
 """
 
 # C4 Actualizar materia
