@@ -1,130 +1,94 @@
-# 🎓 Mapa de Materias — Grafo de prerrequisitos con Neo4j AuraDB
+# 🎓 Flujo de Materias — Ingeniería en TI y Negocios Digitales (Anáhuac Mayab)
 
-Aplicación web sencilla que modela el plan de estudios de una carrera como un **grafo**: cada materia es un nodo y cada prerrequisito es una relación. Con eso el alumno puede saber, en tiempo real y desde la nube:
+Aplicación que modela el **plan de estudios real** de la carrera como un **grafo** en **Neo4j AuraDB** (nube). Cada materia es un nodo, cada seriación es una relación `REQUIERE` y el avance de cada alumno se guarda como relaciones `APROBO`, `CURSA` y `PRECARGA`.
 
-- ¿Qué materias **puedo cursar ya** con lo que tengo aprobado?
-- ¿Qué **cadena completa de prerrequisitos** necesito para llegar a una materia (p. ej. *Proyecto Terminal*)?
-- ¿Qué materias **desbloqueo** si apruebo una materia?
-- ¿Cuál es la **ruta crítica** (la cadena más larga) que define el mínimo de semestres?
-- ¿Qué compañeros **cursan las mismas materias** que yo?
+Tiene dos tipos de usuario:
+
+- **Alumno:** ve su flujograma a colores, qué materias puede cargar el próximo semestre y **con qué amigos puede llevar cada materia**. También explora la cadena de prerrequisitos de cualquier materia, dibujada como grafo.
+- **Coordinador:** ve la **demanda** de cada materia para el próximo semestre, los **alumnos rezagados**, el **impacto de no abrir una materia** y las materias "cuello de botella". Además administra materias, seriaciones, alumnos y estados (CRUD).
 
 > Proyecto del Segundo Parcial — Bases de Datos Avanzadas, Universidad Anáhuac Mayab.
-> Paradigma: **Red / Grafo**. Servicio: **Neo4j AuraDB Free** (DaaS). Lenguaje: **Python**.
-
----
+> Paradigma: **Red / Grafo** · Servicio: **Neo4j AuraDB Free** (DaaS) · Lenguaje: **Python**.
 
 ## 🧱 Stack
 
 | Capa | Tecnología |
 |---|---|
 | Base de datos | Neo4j AuraDB Free (nube, gestionada) |
-| Lenguaje de consultas | Cypher |
-| Driver | `neo4j` (driver oficial de Python, v5) |
-| Interfaz | Streamlit |
-| Credenciales | Variables de entorno con `python-dotenv` (`.env`) |
+| Consultas | Cypher |
+| Driver | `neo4j` (driver oficial de Python) |
+| Interfaz | Streamlit (incluye grafos con Graphviz) |
+| Credenciales | Variables de entorno (`.env` con `python-dotenv`) |
+| Contraseñas | Hash PBKDF2-SHA256 con sal (biblioteca estándar) |
 
 ## 📁 Estructura
 
 ```
-mapa-materias/
-├── app.py                 # Interfaz Streamlit (pestañas: Materias, Alumnos, Consultas)
+├── app.py                  # Interfaz: login, vista alumno y vista coordinador
 ├── db/
-│   ├── connection.py      # Crea el driver a partir de variables de entorno
-│   ├── materias.py        # CRUD de materias y prerrequisitos
-│   ├── alumnos.py         # CRUD de alumnos y materias aprobadas/cursando
-│   └── consultas.py       # Consultas especializadas de grafo (traversals y caminos)
+│   ├── connection.py       # Driver de Neo4j a partir de variables de entorno
+│   ├── seguridad.py        # Hash y verificación de contraseñas
+│   ├── usuarios.py         # Inicio de sesión (alumno / coordinador)
+│   ├── materias.py         # CRUD de materias y seriaciones (C1–C7)
+│   ├── alumnos.py          # CRUD de alumnos y estados de materias (C8–C13)
+│   └── consultas.py        # Consultas de grafo (Q1–Q13)
+├── data/
+│   ├── plan_curricular.json  # 58 materias, 35 seriaciones, catálogo de electivas
+│   └── alumnos.json          # 5 alumnos reales con su avance
 ├── seed/
-│   ├── schema.cypher      # Restricciones de unicidad (constraints)
-│   ├── seed.cypher        # Datos iniciales: materias, prerrequisitos y alumnos
-│   └── seed.py            # Ejecuta schema + seed contra AuraDB
-├── docs/                  # PDF y diagramas
-├── .env.example           # Plantilla de variables de entorno (sin secretos)
-├── requirements.txt
-└── README.md
+│   ├── schema.cypher       # Constraints de unicidad
+│   └── seed.py             # Carga data/*.json en AuraDB
+├── docs/                   # PDF y diagramas
+├── .env.example
+└── requirements.txt
 ```
 
 ## ✅ Requisitos
 
 - Python 3.10 o superior
-- Una cuenta gratuita en [Neo4j Aura](https://console.neo4j.io) con una instancia **AuraDB Free** creada
-- Conexión a internet (la base **no** corre en localhost)
+- Instancia **AuraDB Free** creada en [console.neo4j.io](https://console.neo4j.io)
 
-## ⚙️ Instalación
+## ⚙️ Instalación y ejecución
 
 ```bash
-# 1. Clonar el repositorio
-git clone <URL-del-repo>
-cd mapa-materias
-
-# 2. Crear y activar un entorno virtual
-python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS / Linux:
-source .venv/bin/activate
-
-# 3. Instalar dependencias
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-```
 
-## 🔐 Configurar credenciales
-
-1. En la consola de Aura crea una instancia **AuraDB Free**. Al crearla se descarga un archivo `.txt` con las credenciales; **guárdalo**, la contraseña solo se muestra una vez.
-2. Copia la plantilla y llénala con los datos de ese archivo:
-
-```bash
-cp .env.example .env
-```
-
-```dotenv
-NEO4J_URI=neo4j+s://xxxxxxxx.databases.neo4j.io
-NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=tu_contraseña
-NEO4J_DATABASE=neo4j
-```
-
-> `.env` está en `.gitignore`: las credenciales **nunca** se suben al repositorio.
-
-## 🌱 Poblar la base de datos (seeding)
-
-```bash
-python seed/seed.py
-```
-
-Crea las restricciones de unicidad, borra los datos anteriores y carga el plan de estudios de ejemplo con sus prerrequisitos y algunos alumnos con materias aprobadas. Se puede correr las veces que quieras (es idempotente).
-
-## ▶️ Ejecutar la aplicación
-
-```bash
+cp .env.example .env               # y llénalo con el .txt que descarga Aura
+python seed/seed.py                # carga plan, alumnos y usuarios en la nube
 streamlit run app.py
 ```
 
-Se abre en `http://localhost:8501`. La **interfaz** corre local, pero **todos los datos se leen y escriben en AuraDB en la nube**: en la barra lateral se muestra el estado de conexión y la URI del servidor remoto.
+> La interfaz corre en tu equipo, pero **todos los datos se leen y escriben en AuraDB en la nube**.
 
-## 🧪 Flujo de la demo (4 minutos)
+## 🔑 Usuarios de demo
 
-1. Mostrar en la barra lateral que la app está conectada a `neo4j+s://...databases.neo4j.io`.
-2. **Crear** una materia nueva y asignarle un prerrequisito.
-3. **Leer**: buscarla en la tabla de materias.
-4. **Actualizar** sus créditos o su nombre.
-5. Elegir un alumno → **"¿Qué puedo cursar?"** → marcar una materia como aprobada → ver cómo aparecen materias nuevas desbloqueadas.
-6. **Cadena de prerrequisitos** de *Proyecto Terminal* y **ruta crítica**.
-7. **Eliminar** la materia creada en el paso 2.
-8. Abrir Neo4j Browser / Explore en Aura y mostrar que los cambios persisten en la nube (y el grafo dibujado).
+Todos usan la contraseña definida en `SEED_PASSWORD` (por defecto `anahuac2026`).
 
-## 🗺️ Modelo de datos (resumen)
+| Usuario | Rol |
+|---|---|
+| `coordinador` | Coordinador |
+| `evega`, `avieto`, `rvargas`, `ylanda`, `jzapata` | Alumnos |
+
+## 🗺️ Modelo de datos
 
 ```
-(:Alumno {matricula, nombre, carrera})
-   ├─[:APROBO {calificacion, periodo}]──▶ (:Materia)
-   └─[:CURSA {periodo}]───────────────▶ (:Materia)
+(:Alumno {matricula, nombre, usuario, password_hash})
+   ├─[:APROBO]────▶ (:Materia)
+   ├─[:CURSA]─────▶ (:Materia)
+   └─[:PRECARGA]──▶ (:Materia)
 
-(:Materia {clave, nombre, semestre, creditos, area})
-   └─[:REQUIERE]──▶ (:Materia)      // "Estructuras de Datos REQUIERE Programación II"
+(:Materia {clave, nombre, semestre, creditos, bloque, tipo})
+   └─[:REQUIERE]──▶ (:Materia)        // seriación: hay que aprobar la de destino
+
+(:Coordinador {usuario, nombre, password_hash})
 ```
 
-El diseño completo y el catálogo de consultas Cypher están en `docs/`.
+## 🧪 Guion de la demo (4 min)
 
-## 👤 Autor
-
-Emilio — Bases de Datos Avanzadas, Universidad Anáhuac Mayab, 2026.
+1. Entrar como `evega`: flujograma, "¿Qué puedo cargar?" y "¿Con quién puedo llevar…?".
+2. "Explorar materia": grafo de la cadena hasta *Inteligencia de Negocios*.
+3. Cerrar sesión y entrar como `coordinador`: demanda, rezagados e impacto de no abrir una materia.
+4. CRUD: crear una materia, agregarle una seriación, aprobarle una materia a un alumno, y ver cómo cambia la demanda. Al final, eliminar la materia creada.
+5. Abrir Neo4j Browser en Aura y mostrar que los cambios persisten en la nube.

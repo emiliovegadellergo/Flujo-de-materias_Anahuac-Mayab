@@ -1,10 +1,10 @@
-"""CRUD de materias y de sus prerrequisitos (relación REQUIERE)."""
+"""CRUD de materias (obligatorias y electivas) y de sus prerrequisitos (REQUIERE)."""
 from db.connection import ejecutar
 
 # C1 Crear materia
 QUERY_CREAR_MATERIA = """
 CREATE (m:Materia {clave: $clave, nombre: $nombre, semestre: $semestre,
-                   creditos: $creditos, area: $area})
+                   creditos: $creditos, bloque: $bloque, tipo: $tipo})
 RETURN m.clave AS clave
 """
 
@@ -13,8 +13,9 @@ QUERY_LISTAR_MATERIAS = """
 MATCH (m:Materia)
 OPTIONAL MATCH (m)-[:REQUIERE]->(r:Materia)
 RETURN m.clave AS clave, m.nombre AS nombre, m.semestre AS semestre,
-       m.creditos AS creditos, m.area AS area, collect(r.clave) AS requisitos
-ORDER BY semestre, clave
+       m.creditos AS creditos, m.bloque AS bloque, m.tipo AS tipo,
+       collect(r.clave) AS requisitos
+ORDER BY tipo, semestre, clave
 """
 
 # C3 Leer una materia
@@ -26,11 +27,11 @@ RETURN m {.*} AS materia
 # C4 Actualizar materia
 QUERY_ACTUALIZAR_MATERIA = """
 MATCH (m:Materia {clave: $clave})
-SET m.nombre = $nombre, m.semestre = $semestre, m.creditos = $creditos, m.area = $area
+SET m.nombre = $nombre, m.semestre = $semestre, m.creditos = $creditos, m.bloque = $bloque
 RETURN m {.*} AS materia
 """
 
-# C5 Eliminar materia y sus relaciones
+# C5 Eliminar materia y todas sus relaciones
 QUERY_ELIMINAR_MATERIA = """
 MATCH (m:Materia {clave: $clave})
 DETACH DELETE m
@@ -51,10 +52,10 @@ DELETE rel
 """
 
 
-def crear_materia(driver, clave, nombre, semestre, creditos, area):
+def crear_materia(driver, clave, nombre, semestre, creditos, bloque, tipo="obligatoria"):
     """Crea un nodo :Materia (la constraint impide claves repetidas)."""
-    return ejecutar(driver, QUERY_CREAR_MATERIA, clave=clave, nombre=nombre,
-                    semestre=semestre, creditos=creditos, area=area)
+    return ejecutar(driver, QUERY_CREAR_MATERIA, clave=clave, nombre=nombre, semestre=semestre,
+                    creditos=creditos, bloque=bloque, tipo=tipo)
 
 
 def listar_materias(driver):
@@ -68,10 +69,10 @@ def obtener_materia(driver, clave):
     return filas[0]["materia"] if filas else None
 
 
-def actualizar_materia(driver, clave, nombre, semestre, creditos, area):
+def actualizar_materia(driver, clave, nombre, semestre, creditos, bloque):
     """Actualiza las propiedades de una materia."""
     return ejecutar(driver, QUERY_ACTUALIZAR_MATERIA, clave=clave, nombre=nombre,
-                    semestre=semestre, creditos=creditos, area=area)
+                    semestre=semestre, creditos=creditos, bloque=bloque)
 
 
 def eliminar_materia(driver, clave):

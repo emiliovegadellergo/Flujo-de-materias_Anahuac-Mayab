@@ -1,0 +1,780 @@
+{
+  "carrera": "Ingeniería en Tecnologías de la Información y Negocios Digitales",
+  "fuente": "Flujograma del portal Anáhuac Mayab (captura 2026-11-17)",
+  "reglas_de_lectura": {
+    "filas": "Cada fila es un semestre (1 a 9), de arriba hacia abajo.",
+    "columnas": "Solo sirven para acomodar; no significan nada por sí solas.",
+    "colores": {
+      "verde": "aprobada",
+      "naranja": "cursando",
+      "azul": "precargada (inscrita para el siguiente periodo)",
+      "gris": "pendiente por cargar"
+    },
+    "conexion_vertical": "Una raya corta entre dos materias de la misma columna: la de abajo requiere la de arriba.",
+    "conexion_lateral": "Una línea que sale del costado de una materia y llega al costado de otra: la del semestre posterior requiere la del semestre anterior.",
+    "color_de_linea": "Negra y gris significan lo mismo: prerrequisito seriado. Hay que acreditar la materia anterior para poder cargar y cursar la siguiente.",
+    "numero_derecho": "Créditos de la materia.",
+    "etiqueta_izquierda": "Bloque curricular (BPO, BAO, BIO, BIET, BIEA, BAE, REM).",
+    "casillas_+": "Las electivas no forman parte del plan fijo: cada alumno elige las suyas. El plan pide 3 BIET, 3 BIEA y 2 BAE; las casillas '+' son las que faltan por elegir."
+  },
+  "bloques": {
+    "BPO": "Profesional obligatorio",
+    "BAO": "Anáhuac obligatorio",
+    "BIO": "Interdisciplinario obligatorio",
+    "BIET": "Interdisciplinario electivo",
+    "BIEA": "Interdisciplinario electivo",
+    "BAE": "Anáhuac electivo",
+    "REM": "Remedial, 0 créditos"
+  },
+  "materias": [
+    {
+      "clave": "SIS1401",
+      "nombre": "Algoritmos y Programación",
+      "semestre": 1,
+      "columna": 1,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "MAT0403",
+      "nombre": "Matemáticas Básicas para Ingeniería y Biotecnología",
+      "semestre": 1,
+      "columna": 3,
+      "creditos": 0,
+      "bloque": "REM"
+    },
+    {
+      "clave": "MAT1404",
+      "nombre": "Álgebra Lineal",
+      "semestre": 1,
+      "columna": 4,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "CUL1411",
+      "nombre": "Formación Universitaria A",
+      "semestre": 1,
+      "columna": 5,
+      "creditos": 3,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "ADM1401",
+      "nombre": "Introducción a la Empresa",
+      "semestre": 1,
+      "columna": 6,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "LDR1401",
+      "nombre": "Liderazgo y Desarrollo Personal",
+      "semestre": 1,
+      "columna": 7,
+      "creditos": 6,
+      "bloque": "BAO"
+    },
+    {
+      "clave": "HUM1401",
+      "nombre": "Ser Universitario",
+      "semestre": 1,
+      "columna": 8,
+      "creditos": 6,
+      "bloque": "BAO"
+    },
+    {
+      "clave": "SIS1402",
+      "nombre": "Lenguajes Orientados a Objetos",
+      "semestre": 2,
+      "columna": 1,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "MAT2403",
+      "nombre": "Probabilidad y Estadística",
+      "semestre": 2,
+      "columna": 2,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "MAT1402",
+      "nombre": "Cálculo Diferencial",
+      "semestre": 2,
+      "columna": 3,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "FIS1402",
+      "nombre": "Estática",
+      "semestre": 2,
+      "columna": 4,
+      "creditos": 9,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "MAT1415",
+      "nombre": "Matemáticas para Computación",
+      "semestre": 2,
+      "columna": 5,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "ESP0401",
+      "nombre": "Habilidades Universitarias para la Comunicación",
+      "semestre": 2,
+      "columna": 6,
+      "creditos": 0,
+      "bloque": "REM"
+    },
+    {
+      "clave": "EMP1401",
+      "nombre": "Habilidades para el Emprendimiento",
+      "semestre": 2,
+      "columna": 7,
+      "creditos": 3,
+      "bloque": "BIO"
+    },
+    {
+      "clave": "HUM1402",
+      "nombre": "Antropología Fundamental",
+      "semestre": 2,
+      "columna": 8,
+      "creditos": 6,
+      "bloque": "BAO"
+    },
+    {
+      "clave": "SIS2406",
+      "nombre": "Estructuras de Datos y Algoritmos",
+      "semestre": 3,
+      "columna": 1,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "MAT2404",
+      "nombre": "Estadística Inferencial",
+      "semestre": 3,
+      "columna": 2,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "MAT1403",
+      "nombre": "Cálculo Integral",
+      "semestre": 3,
+      "columna": 3,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "IELC1401",
+      "nombre": "Circuitos Eléctricos",
+      "semestre": 3,
+      "columna": 4,
+      "creditos": 9,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS2401",
+      "nombre": "Redes de Computadoras",
+      "semestre": 3,
+      "columna": 5,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "LDR2401",
+      "nombre": "Liderazgo y Equipos de Alto Desempeño",
+      "semestre": 3,
+      "columna": 7,
+      "creditos": 3,
+      "bloque": "BAO"
+    },
+    {
+      "clave": "HUM1403",
+      "nombre": "Persona y Trascendencia",
+      "semestre": 3,
+      "columna": 8,
+      "creditos": 6,
+      "bloque": "BAO"
+    },
+    {
+      "clave": "MAT3402",
+      "nombre": "Métodos Numéricos",
+      "semestre": 4,
+      "columna": 2,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "MAT2401",
+      "nombre": "Cálculo Multivariado",
+      "semestre": 4,
+      "columna": 3,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS3401",
+      "nombre": "Sistemas Operativos",
+      "semestre": 4,
+      "columna": 4,
+      "creditos": 7,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "CUL1412",
+      "nombre": "Formación Universitaria B",
+      "semestre": 4,
+      "columna": 5,
+      "creditos": 3,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS2403",
+      "nombre": "Bases de Datos",
+      "semestre": 4,
+      "columna": 6,
+      "creditos": 7,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "EMP1402",
+      "nombre": "Emprendimiento e Innovación",
+      "semestre": 4,
+      "columna": 7,
+      "creditos": 6,
+      "bloque": "BIO"
+    },
+    {
+      "clave": "HUM1404",
+      "nombre": "Ética",
+      "semestre": 4,
+      "columna": 8,
+      "creditos": 9,
+      "bloque": "BAO"
+    },
+    {
+      "clave": "CMP2405",
+      "nombre": "Arquitectura de Computadoras",
+      "semestre": 5,
+      "columna": 1,
+      "creditos": 7,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS3407",
+      "nombre": "Ingeniería de Software I",
+      "semestre": 5,
+      "columna": 2,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "FIS2403",
+      "nombre": "Electricidad y Magnetismo",
+      "semestre": 5,
+      "columna": 3,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS2405",
+      "nombre": "Electrónica Digital",
+      "semestre": 5,
+      "columna": 4,
+      "creditos": 7,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "MAT2402",
+      "nombre": "Ecuaciones Diferenciales",
+      "semestre": 5,
+      "columna": 5,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS2404",
+      "nombre": "Bases de Datos Avanzadas",
+      "semestre": 5,
+      "columna": 6,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "HUM1405",
+      "nombre": "Humanismo Clásico y Contemporáneo",
+      "semestre": 5,
+      "columna": 8,
+      "creditos": 6,
+      "bloque": "BAO"
+    },
+    {
+      "clave": "SIS3408",
+      "nombre": "Ingeniería de Software II",
+      "semestre": 6,
+      "columna": 2,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "CON2402",
+      "nombre": "Contabilidad y Costos para Ingeniería",
+      "semestre": 6,
+      "columna": 3,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "FIS2401",
+      "nombre": "Dinámica",
+      "semestre": 6,
+      "columna": 4,
+      "creditos": 9,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS3402",
+      "nombre": "Redes Avanzadas",
+      "semestre": 6,
+      "columna": 5,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS3410",
+      "nombre": "Programación para Internet",
+      "semestre": 6,
+      "columna": 6,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SOC3401",
+      "nombre": "Responsabilidad Social y Sustentabilidad",
+      "semestre": 6,
+      "columna": 7,
+      "creditos": 6,
+      "bloque": "BIO"
+    },
+    {
+      "clave": "SIS4401",
+      "nombre": "Inteligencia Artificial",
+      "semestre": 7,
+      "columna": 1,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS3403",
+      "nombre": "Programación de Dispositivos Móviles",
+      "semestre": 7,
+      "columna": 2,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS4402",
+      "nombre": "Calidad de Software",
+      "semestre": 7,
+      "columna": 3,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS4404",
+      "nombre": "Infraestructura y Cómputo en la Nube",
+      "semestre": 7,
+      "columna": 4,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS3404",
+      "nombre": "Implementación de Sistemas Integrados",
+      "semestre": 7,
+      "columna": 6,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "IIND4409",
+      "nombre": "Planeación Estratégica",
+      "semestre": 8,
+      "columna": 1,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "INT4405",
+      "nombre": "Practicum de Tecnologías de la Información I",
+      "semestre": 8,
+      "columna": 2,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS4407",
+      "nombre": "Legislación Informática",
+      "semestre": 8,
+      "columna": 3,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS4403",
+      "nombre": "Seguridad Informática y Análisis Forense",
+      "semestre": 8,
+      "columna": 5,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS4410",
+      "nombre": "Procesamiento Inteligente de Datos",
+      "semestre": 8,
+      "columna": 6,
+      "creditos": 7,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS4411",
+      "nombre": "Realidad Virtual y Aumentada",
+      "semestre": 9,
+      "columna": 1,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "INT4406",
+      "nombre": "Practicum de Tecnologías de la Información II",
+      "semestre": 9,
+      "columna": 2,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS4415",
+      "nombre": "Informática en la Cuarta Revolución Industrial",
+      "semestre": 9,
+      "columna": 3,
+      "creditos": 4.5,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS4409",
+      "nombre": "Nuevas Tecnologías en Informática",
+      "semestre": 9,
+      "columna": 4,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "IIND3404",
+      "nombre": "Ingeniería Financiera",
+      "semestre": 9,
+      "columna": 5,
+      "creditos": 6,
+      "bloque": "BPO"
+    },
+    {
+      "clave": "SIS3409",
+      "nombre": "Inteligencia de Negocios",
+      "semestre": 9,
+      "columna": 6,
+      "creditos": 7,
+      "bloque": "BPO"
+    }
+  ],
+  "requisitos": [
+    {
+      "materia": "SIS1402",
+      "requiere": "SIS1401",
+      "linea": "vertical"
+    },
+    {
+      "materia": "SIS2406",
+      "requiere": "SIS1402",
+      "linea": "vertical"
+    },
+    {
+      "materia": "SIS4401",
+      "requiere": "SIS1402",
+      "linea": "negra"
+    },
+    {
+      "materia": "SIS3403",
+      "requiere": "SIS1402",
+      "linea": "negra"
+    },
+    {
+      "materia": "MAT3402",
+      "requiere": "SIS1401",
+      "linea": "gris"
+    },
+    {
+      "materia": "MAT3402",
+      "requiere": "MAT1403",
+      "linea": "gris"
+    },
+    {
+      "materia": "MAT2404",
+      "requiere": "MAT2403",
+      "linea": "vertical"
+    },
+    {
+      "materia": "SIS3408",
+      "requiere": "SIS3407",
+      "linea": "vertical"
+    },
+    {
+      "materia": "INT4405",
+      "requiere": "SIS3408",
+      "linea": "negra"
+    },
+    {
+      "materia": "INT4406",
+      "requiere": "INT4405",
+      "linea": "vertical"
+    },
+    {
+      "materia": "MAT1402",
+      "requiere": "MAT0403",
+      "linea": "vertical"
+    },
+    {
+      "materia": "MAT1403",
+      "requiere": "MAT1402",
+      "linea": "vertical"
+    },
+    {
+      "materia": "MAT2401",
+      "requiere": "MAT1403",
+      "linea": "vertical"
+    },
+    {
+      "materia": "FIS2403",
+      "requiere": "MAT2401",
+      "linea": "vertical"
+    },
+    {
+      "materia": "FIS1402",
+      "requiere": "MAT0403",
+      "linea": "gris"
+    },
+    {
+      "materia": "IELC1401",
+      "requiere": "MAT0403",
+      "linea": "negra"
+    },
+    {
+      "materia": "SIS2405",
+      "requiere": "IELC1401",
+      "linea": "negra"
+    },
+    {
+      "materia": "SIS4404",
+      "requiere": "SIS3401",
+      "linea": "gris"
+    },
+    {
+      "materia": "FIS2401",
+      "requiere": "FIS1402",
+      "linea": "negra"
+    },
+    {
+      "materia": "SIS3402",
+      "requiere": "SIS2401",
+      "linea": "negra"
+    },
+    {
+      "materia": "SIS3410",
+      "requiere": "SIS2401",
+      "linea": "gris"
+    },
+    {
+      "materia": "SIS4403",
+      "requiere": "SIS3402",
+      "linea": "vertical"
+    },
+    {
+      "materia": "SIS2404",
+      "requiere": "SIS2403",
+      "linea": "vertical"
+    },
+    {
+      "materia": "SIS4410",
+      "requiere": "SIS2403",
+      "linea": "negra"
+    },
+    {
+      "materia": "SIS3404",
+      "requiere": "SIS2403",
+      "linea": "gris"
+    },
+    {
+      "materia": "SIS3409",
+      "requiere": "SIS2404",
+      "linea": "negra"
+    },
+    {
+      "materia": "EMP1401",
+      "requiere": "LDR1401",
+      "linea": "vertical"
+    },
+    {
+      "materia": "LDR2401",
+      "requiere": "LDR1401",
+      "linea": "gris"
+    },
+    {
+      "materia": "EMP1402",
+      "requiere": "EMP1401",
+      "linea": "negra"
+    },
+    {
+      "materia": "SOC3401",
+      "requiere": "ESP0401",
+      "linea": "negra"
+    },
+    {
+      "materia": "SOC3401",
+      "requiere": "HUM1404",
+      "linea": "negra"
+    },
+    {
+      "materia": "HUM1402",
+      "requiere": "HUM1401",
+      "linea": "vertical"
+    },
+    {
+      "materia": "HUM1403",
+      "requiere": "HUM1402",
+      "linea": "vertical"
+    },
+    {
+      "materia": "HUM1404",
+      "requiere": "HUM1402",
+      "linea": "negra"
+    },
+    {
+      "materia": "HUM1405",
+      "requiere": "HUM1404",
+      "linea": "vertical"
+    }
+  ],
+  "electivas_requeridas": {
+    "BIET": 3,
+    "BIEA": 3,
+    "BAE": 2
+  },
+  "catalogo_electivas": [
+    {
+      "clave": "TLDR0419",
+      "nombre": "Organización de Eventos",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "TACL0441",
+      "nombre": "Fotografía",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "ITEC1403",
+      "nombre": "Nuevas Tecnologías",
+      "creditos": 6,
+      "bloque": "BIEA"
+    },
+    {
+      "clave": "ELDR0419",
+      "nombre": "Pensamiento Crítico y Creativo",
+      "creditos": 6,
+      "bloque": "BAE"
+    },
+    {
+      "clave": "TDPR0430",
+      "nombre": "Fútbol Soccer (Varonil)",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "TCUG0408",
+      "nombre": "Taller de Repostería",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "IFIN1401",
+      "nombre": "Finanzas Personales",
+      "creditos": 6,
+      "bloque": "BIEA"
+    },
+    {
+      "clave": "TLDR0410",
+      "nombre": "Imagen y Proyección Profesional",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "ITEC1401",
+      "nombre": "Introducción a la Inteligencia Artificial",
+      "creditos": 6,
+      "bloque": "BIEA"
+    },
+    {
+      "clave": "ISOC1413",
+      "nombre": "Resolución de Conflictos y Cultura de la Paz",
+      "creditos": 6,
+      "bloque": "BIEA"
+    },
+    {
+      "clave": "ELDR0417",
+      "nombre": "Oportunidades para Generar Nuevos Negocios",
+      "creditos": 6,
+      "bloque": "BAE"
+    },
+    {
+      "clave": "TDPR0401",
+      "nombre": "Clínica de Acondicionamiento Físico",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "TACL0417",
+      "nombre": "Cine",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "TDPR0445",
+      "nombre": "Clínica de Tae Kwon Do",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "TCUG0409",
+      "nombre": "Taller Culinario",
+      "creditos": 3,
+      "bloque": "BIET"
+    },
+    {
+      "clave": "ISOC1407",
+      "nombre": "Temas Selectos Interdisciplinarios B",
+      "creditos": 6,
+      "bloque": "BIEA"
+    }
+  ],
+  "creditos_electivos_requeridos": {
+    "BAE": 12,
+    "BIEA+BIET": 27,
+    "fuente": "Barra 'Electivos' del portal (BAE 0/12, BIEa+BIEt 9/27)"
+  }
+}
